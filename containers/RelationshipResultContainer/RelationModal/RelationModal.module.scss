@@ -1,0 +1,128 @@
+@import 'styles/utils';
+
+.container {
+  width: 94%;
+  max-width: 450px;
+  margin: 0 auto;
+  background-color: $grayscale00;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.contents {
+  max-height: 70vh;
+  padding: 20px 7%;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.step {
+  margin-top: 30px;
+}
+
+.inputSet {
+  & + & {
+    margin-top: 15px;
+  }
+
+  p {
+    padding-left: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  input {
+    width: 100%;
+    padding: 15px 13px;
+    border: 1px solid $grayscale50;
+    border-radius: 5px;
+    outline-color: $pointColor;
+  }
+}
+
+.categoryTitle {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.categoryBox {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category {
+  width: 50%;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  outline: none;
+
+  p {
+    font-size: 16px;
+    margin-left: 7px;
+  }
+
+  input {
+    width: 20px;
+  }
+}
+
+.customCategory {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  background-color: $grayscale30;
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+
+  button {
+    flex-shrink: 0;
+    padding: 3px 10px;
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: $pointColor;
+  }
+}
+
+.add {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: $pointColor;
+  background-color: transparent;
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: .1rem solid $grayscale20;
+
+  button {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 15px 0;
+    font-size: 16px;
+    color: $pointColor;
+    background-color: $grayscale00;
+  }
+
+  .back {
+    color: $grayscale80;
+  }
+}
