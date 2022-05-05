@@ -25,7 +25,10 @@ const Layout = ({
         <Header />
       </header>
 
-      <main ref={mainRef}>
+      <main 
+        ref={mainRef}
+        className={styles.main}
+      >
         {children}
       </main>
       

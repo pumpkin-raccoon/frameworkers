@@ -1,0 +1,43 @@
+@import 'styles/utils';
+
+.container {
+  width: 94%;
+  max-width: $content-width;
+  padding-top: 15px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.add {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: $pointColor;
+  background-color: transparent;
+}
+
+.box {
+  margin-top: 10px;
+  width: 100%;
+  min-height: 300px;
+  max-height: 70vh;
+  border: 1px solid $grayscale50;
+  border-radius: 10px;
+}
+
+.buttonWrapper {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

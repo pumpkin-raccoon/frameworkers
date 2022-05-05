@@ -12,7 +12,7 @@ export const FRAMEWORKS: Framework[] = [
     description: '만다라트는 가나다라마바사',
     path: '/'
   }, {
-    name: '인간 관계',
+    name: '인간관계 다이어그램',
     image: '',
     description: '나의 인간관계를 데이터로 확인해 보세요.',
     path: '/relationship'

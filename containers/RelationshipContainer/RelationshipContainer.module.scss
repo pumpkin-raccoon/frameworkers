@@ -1,0 +1,62 @@
+@import 'styles/utils';
+
+.container {
+  position: relative;
+  width: 94%;
+  max-width: $content-width;
+  margin: 0 auto;
+  height: 100%;
+  padding-top: 50px;
+}
+
+.introduction {
+  display: grid;
+  grid-template-areas:
+    "image title"
+    "image description";
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+  row-gap: 5px;
+}
+
+.imageWrapper {
+  grid-area: image;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: $grayscale80;
+}
+
+.title {
+  align-self: flex-end;
+  grid-area: title;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.description {
+  align-self: flex-start;
+  grid-area: description;
+}
+
+.commentPart {
+  margin-top: 50px;
+}
+
+.comment {
+  padding: 20px;
+  box-shadow: 0 .1rem 1rem 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+  & + & {
+    margin-top: 15px;
+  }
+}
+
+.buttonWrapper {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
