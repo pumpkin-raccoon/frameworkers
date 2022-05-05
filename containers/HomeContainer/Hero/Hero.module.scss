@@ -1,0 +1,15 @@
+@import 'styles/utils';
+
+.container {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $grayscale100;
+}
+
+.title {
+  font-size: 32px;
+  color: $grayscale20;
+  line-height: 50px;
+}

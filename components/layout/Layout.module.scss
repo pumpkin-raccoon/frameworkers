@@ -1,0 +1,21 @@
+@import 'styles/utils';
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 60px;
+  background-color: $grayscale00;
+  border-bottom: 1px solid transparent;
+  z-index: $index-header;
+
+  &.border {
+    border-bottom-color: $grayscale30;
+    background-color: $grayscale00;
+  }
+}
