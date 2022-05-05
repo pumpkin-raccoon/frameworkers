@@ -7,7 +7,7 @@ const Header = () => {
     <div className={styles.container}>
       <Link href="/">
         <div className={styles.logo}>
-          Gorde
+          Frameworkers
         </div>
       </Link>
       
