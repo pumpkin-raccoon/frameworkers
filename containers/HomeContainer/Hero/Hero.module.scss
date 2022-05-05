@@ -1,24 +1,95 @@
 @import 'styles/utils';
 
 .container {
-  height: 500px;
+  padding: 80px 0 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   background-color: $grayscale100;
+  @include tablet {
+    padding: 120px 20px 180px;
+  }
 }
 
 .title {
-  font-size: 32px;
+  font-size: 26px;
+  line-height: 38px;
+  font-weight: 500;
   color: $grayscale20;
-  line-height: 50px;
+  @include tablet {
+    font-size: 32px;
+    line-height: 50px;
+  }
 }
 
-.buttons {
-  margin-top: 30px;
+.frameworks {
+  margin-top: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  flex-direction: column;
+  gap: 60px;
+  @include tablet {
+    flex-direction: row;
+    gap: 80px;
+  }
+  @include desktop {
+    gap: 110px;
+  }
+}
+
+.item {
+  text-align: center;
+}
+
+.imageWrapper {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: $grayscale60;
+  @include desktop {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.name {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  color: $grayscale20;
+  @include desktop {
+    margin-top: 16px;
+    font-size: 22px;
+  }
+}
+
+.description {
+  margin-top: 10px;
+  font-size: 16px;
+  color: $grayscale40;
+  @include desktop {
+    margin-top: 12px;
+  }
+}
+
+.buttonWrapper {
+  margin-top: 30px;
+  @include desktop {
+    margin-top: 40px;
+  }
+}
+
+.button {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: $grayscale100;
+  background-color: $grayscale20;
+  border-radius: 4px;
+  @include desktop {
+    padding: 10px 16px;
+    font-size: 16px;
+  }
 }
