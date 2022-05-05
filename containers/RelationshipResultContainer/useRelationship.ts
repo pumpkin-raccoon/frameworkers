@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Relationship } from "types/relationship"
+import { RELATIONSHIP_KEY } from "./constants"
 
 const useRelationship = () => {
   const [relations, setRelations] = useState<Relationship[]>([])
@@ -33,17 +34,27 @@ const useRelationship = () => {
 
   const updateRelationship = (relation: Relationship) => {
     const newRelations = [...relations]
-    console.log('index : ', targetIndex)
-    console.log('relation : ', relation)
     if (targetIndex < 0) {
       newRelations.push(relation)
     } else {
       newRelations.splice(targetIndex, 1, relation)
     }
-    console.log('newRelations : ', newRelations)
     setRelations(newRelations)
     setOpenModal(false)
+    localStorage.setItem(RELATIONSHIP_KEY, JSON.stringify(newRelations))
   }
+
+  const fetchRelationship = () => {
+    const savedRelationship = localStorage.getItem(RELATIONSHIP_KEY)
+    if (savedRelationship) {
+      const targetRelationship = JSON.parse(savedRelationship)
+      setRelations(targetRelationship)
+    }
+  }
+
+  useEffect(() => {
+    fetchRelationship()
+  }, [])
 
   return {
     relations,

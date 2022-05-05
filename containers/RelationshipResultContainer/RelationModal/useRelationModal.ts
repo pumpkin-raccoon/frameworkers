@@ -71,7 +71,6 @@ const useRelationModal = ({
   }
 
   useEffect(() => {
-    console.log('effect : ', inputRelation)
     if (opened && inputRelation.name) {
       setRelation(inputRelation)
     }
