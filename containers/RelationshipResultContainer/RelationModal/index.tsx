@@ -33,7 +33,11 @@ const RelationModal = ({
     customCategoryInput,
     setCustomCategoryInput,
     onClickCategoryInput,
-  } = useRelationModal(inputRelation, updateRelation)
+  } = useRelationModal({
+    inputRelation, 
+    updateRelation,
+    opened: open
+  })
 
   const handleClose = () => {
     onClose()
@@ -138,6 +142,7 @@ const RelationModal = ({
                           checked={relation.age === RelationshipAge.Higher}
                           onChange={() => setRelationByKey('age', RelationshipAge.Higher)}
                           value="인생 선배"
+                          defaultChecked={false}
                         />
                         인생 선배
                       </div>
@@ -146,6 +151,7 @@ const RelationModal = ({
                           checked={relation.age === RelationshipAge.Same}
                           onChange={() => setRelationByKey('age', RelationshipAge.Same)}
                           value="또래"
+                          defaultChecked={false}
                         />
                         또래
                       </div>
@@ -154,6 +160,7 @@ const RelationModal = ({
                           checked={relation.age === RelationshipAge.Lower}
                           onChange={() => setRelationByKey('age', RelationshipAge.Lower)}
                           value="인생 후배"
+                          defaultChecked={false}
                         />
                         인생 후배
                       </div>

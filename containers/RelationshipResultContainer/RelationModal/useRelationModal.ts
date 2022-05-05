@@ -1,12 +1,19 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Relationship } from "types/relationship"
 import { CATEGORY_SET } from "./constants"
 
-const useRelationModal = (
-  relationValue: Relationship,
+interface UseRelationModalProps {
+  opened: boolean
+  inputRelation: Relationship
   updateRelation: (relation: Relationship) => void
-) => {
-  const [relation, setRelation] = useState<Relationship>(relationValue)
+}
+
+const useRelationModal = ({
+  opened,
+  inputRelation,
+  updateRelation
+}: UseRelationModalProps) => {
+  const [relation, setRelation] = useState<Relationship>(inputRelation)
   const [step, setStep] = useState<'info' | 'category'>('info')
   const [openToast, setOpenToast] = useState(false)
   const [categoryOptions, setCategoryOptions] = useState(CATEGORY_SET)
@@ -62,6 +69,13 @@ const useRelationModal = (
     setCustomCategoryMode(false)
     setCustomCategoryInput('')
   }
+
+  useEffect(() => {
+    console.log('effect : ', inputRelation)
+    if (opened && inputRelation.name) {
+      setRelation(inputRelation)
+    }
+  }, [inputRelation, opened])
 
   return {
     openToast,
