@@ -1,5 +1,6 @@
 import { Modal } from "@mui/material"
 import Toast from "components/Toast"
+import { OPTION } from "constants/meta"
 import { useRouter } from "next/router"
 import { useState } from "react"
 import styles from './StartModal.module.scss'
@@ -55,25 +56,29 @@ const StartModal = ({
                   onChange={(event) => setName(event.target.value)}
                 />
               </div>
-              <div className={styles.inputSet}>
+              {OPTION.hasInstagramFeature && (
+                <div className={styles.inputSet}>
+                  <p>
+                    인스타그램 계정
+                  </p>
+                  <input 
+                    placeholder="팔로잉 중인 사람들을 불러올 인스타그램 계정명을 입력하세요."
+                    value={instagramProfile}
+                    onChange={(event) => setInstagramProfile(event.target.value)}
+                  />
+                </div>
+              )}
+            </div>
+            {OPTION.hasInstagramFeature && (
+              <div className={styles.message}>
                 <p>
-                  인스타그램 계정
+                  - 계정 공개 범위가 공개인 경우에만 팔로잉하는 사람들을 불러올 수 있습니다. 비공개 계정이라면 불러오기를 할 때만 잠시 공개로 전환해주세요.
                 </p>
-                <input 
-                  placeholder="맞팔로워를 불러올 인스타그램 계정명을 입력하세요."
-                  value={instagramProfile}
-                  onChange={(event) => setInstagramProfile(event.target.value)}
-                />
+                <p>
+                  - 인스타그램 팔로잉 계정을 불러오지 않고 직접 지인들을 추가할 수 있습니다.
+                </p>
               </div>
-            </div>
-            <div className={styles.message}>
-              <p>
-                - 계정 공개 범위가 공개인 경우에만 맞팔로워를 불러올 수 있습니다. 비공개 계정이라면 불러오기를 할 때만 잠시 공개로 전환해주세요.
-              </p>
-              <p>
-                - 인스타그램 맞팔로워를 불러오지 않고 직접 지인들을 추가할 수 있습니다.
-              </p>
-            </div>
+            )}
           </div>
           
           <div className={styles.buttonWrapper}>

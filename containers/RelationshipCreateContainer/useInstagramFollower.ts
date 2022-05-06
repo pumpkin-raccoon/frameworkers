@@ -1,4 +1,4 @@
-import axios from "axios"
+import { OPTION } from "constants/meta"
 import { useQuery } from "react-query"
 import { getAxiosRequest } from "utils/axios"
 
@@ -12,7 +12,10 @@ const useInstagramFollower = (profileName: string) => {
       method: 'get',
       url: `https://3.39.80.34:5000/possibility`
     }),
-    { enabled: Boolean(profileName), retry: false }
+    { 
+      enabled: Boolean(profileName) && OPTION.hasInstagramFeature, 
+      retry: false 
+    }
   )
 
   const {
@@ -24,7 +27,10 @@ const useInstagramFollower = (profileName: string) => {
       method: 'get',
       url: `https://3.39.80.34:5000/?user_id=${profileName}`
     }),
-    { enabled: Boolean(profileName), retry: false }
+    { 
+      enabled: Boolean(profileName) && OPTION.hasInstagramFeature,
+      retry: false 
+    }
   )
 
   return {

@@ -1,3 +1,4 @@
+import { OPTION } from "constants/meta"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { RelationshipPerson } from "types/relationship"
@@ -25,7 +26,7 @@ const useRelationship = () => {
   } = useInstagramFollower(instagram?.toString() ?? '')
 
   const addPerson = () => {
-    if (isLoadingProfile) {
+    if (OPTION.hasInstagramFeature && isLoadingProfile) {
       openToast('인스타그램 팔로워를 불러오고 있습니다.. 잠시만 기다려주세요:)')
       return
     }
@@ -106,14 +107,14 @@ const useRelationship = () => {
 
   useEffect(() => {
     console.log('insta loading : ', isLoadingProfile, profileFollower, instagram)
-    if (!isLoadingAvailability && !isAvailable && instagram) {
+    if (!isLoadingAvailability && !isAvailable && instagram && OPTION.hasInstagramFeature) {
       openToast('현재 인스타그램 정보를 읽어올 수 없어요 :(')
     }
   }, [isLoadingAvailability, isAvailable, instagram])
 
   useEffect(() => {
     console.log('insta follower : ', isLoadingProfile, profileFollower, instagram)
-    if (!isLoadingProfile && instagram) {
+    if (!isLoadingProfile && instagram && OPTION.hasInstagramFeature) {
       if (profileFollower) {
         // follower를 people에 추가하기
       } else {
