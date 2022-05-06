@@ -10,7 +10,11 @@ const RelationshipContainer = () => {
   return (
     <div className={styles.container}>
       <div className={styles.introduction}>
-        <div className={styles.imageWrapper}/>
+        <img
+          className={styles.imageWrapper}
+          alt="인간관계 다이어그램"
+          src="/images/relation.png"
+        />
         <p className={styles.title}>
           인간관계 다이어그램
         </p>
