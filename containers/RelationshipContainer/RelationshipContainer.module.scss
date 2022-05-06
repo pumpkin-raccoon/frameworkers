@@ -3,10 +3,10 @@
 .container {
   position: relative;
   width: 94%;
-  max-width: $content-width;
+  max-width: 800px;
   margin: 0 auto;
   height: 100%;
-  padding-top: 50px;
+  padding: 50px 0 100px;
 }
 
 .introduction {
@@ -52,6 +52,22 @@
   & + & {
     margin-top: 15px;
   }
+}
+
+.exampleWrapper {
+  margin-top: 50px;
+  text-align: center;
+
+  img {
+    width: 100%;
+  }
+}
+
+.exampleTitle {
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  color: $pointColor;
 }
 
 .buttonWrapper {

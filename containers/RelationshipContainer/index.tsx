@@ -30,6 +30,19 @@ const RelationshipContainer = () => {
           </div>
         ))}
       </div>
+      <div className={styles.exampleWrapper}>
+        <p className={styles.exampleTitle}>
+          이런 분석을 확인할 수 있어요!
+        </p>
+        <img 
+          src="/images/relation-example-01.png"
+          alt="relationship framework example"
+        />
+        <img 
+          src="/images/relation-example-02.png"
+          alt="relationship framework example"
+        />
+      </div>
       <div className={styles.buttonWrapper}>
         <MainButton onClick={() => setOpenModal(true)}>
           시작하기

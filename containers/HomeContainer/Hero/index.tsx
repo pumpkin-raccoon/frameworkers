@@ -16,7 +16,10 @@ const Hero = () => {
             className={styles.item}
           >
             <div className={styles.imageWrapper}>
-
+              <img
+                alt={`${framework.name} 프레임워크`}
+                src={framework.image}
+              />
             </div>
             <p className={styles.name}>
               {framework.name}

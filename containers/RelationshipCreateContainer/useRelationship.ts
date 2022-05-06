@@ -15,13 +15,12 @@ const useRelationship = () => {
   const { postRelationship, isLoading } = usePostRelationship()
 
   const addPerson = () => {
-    setOpenModal(undefined)
     openTargetPerson(-1)
   }
 
   const openTargetPerson = (index: number) => {
     setTargetIndex(index)
-    setOpenModal(undefined)
+    setOpenModal('relation')
   }
 
   const removePerson = (index: number) => {
