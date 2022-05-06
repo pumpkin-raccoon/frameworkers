@@ -6,5 +6,5 @@ const COMMENTS = [
 ]
 
 export const RELATIONSHIP_COMMENTS = OPTION.hasInstagramFeature
-  ? COMMENTS.push('내가 인스타그램에서 팔로우하는 친구 목록을 불러와 분석해 볼 수 있어요.')
+  ? [...COMMENTS, '내가 인스타그램에서 팔로우하는 친구 목록을 불러와 분석해 볼 수 있어요.']
   : COMMENTS
