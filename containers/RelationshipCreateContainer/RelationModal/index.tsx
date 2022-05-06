@@ -112,7 +112,7 @@ const RelationModal = ({
                           onChange={() => setRelationByKey('intimacy', RelationshipIntimacy.High)}
                           value="상"
                         />
-                        상 (지금 부르면 당장 나올 것 같은 사람)
+                        상
                       </div>
                       <div onClick={() => setRelationByKey('intimacy', RelationshipIntimacy.Middle)}>
                         <Radio
@@ -120,7 +120,7 @@ const RelationModal = ({
                           onChange={() => setRelationByKey('intimacy', RelationshipIntimacy.Middle)}
                           value="중"
                         />
-                        중 (1:1로 봐도 어색하지 않은 지인)
+                        중
                       </div>
                       <div onClick={() => setRelationByKey('intimacy', RelationshipIntimacy.Low)}>
                         <Radio
@@ -128,7 +128,7 @@ const RelationModal = ({
                           onChange={() => setRelationByKey('intimacy', RelationshipIntimacy.Low)}
                           value="하"
                         />
-                        하 (최근 6개월 이상 연락 없음)
+                        하
                       </div>
                     </div>
                   </div>
