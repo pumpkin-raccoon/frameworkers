@@ -1,7 +1,7 @@
 @import 'styles/utils';
 
 .container {
-  width: 94%;
+  width: 90%;
   height: 100%;
   max-width: $content-width;
   margin: 0 auto;
@@ -17,7 +17,8 @@
 }
 
 .menu {
-  font-size: 18px;
+  font-size: 16px;
+  cursor: pointer;
 
   & + & {
     margin-left: 30px;

@@ -12,7 +12,6 @@ const useShareButtons = (name: string) => {
       title: `${name}님의 인간관계 분석 결과`,
       description: `${name}님은 과연 어떤 인간관계를 갖고 있을까요? 인간관계 데이터 분석 결과를 살펴보세요!`,
       path: router.asPath.replace('/', ''),
-      image: '',
     })
   }
 

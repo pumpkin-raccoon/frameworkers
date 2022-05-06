@@ -3,10 +3,7 @@ export const MENU_ITEMS: {
   path: string
 }[] = [
   {
-    label: 'Menu 1',
-    path: '/'
-  }, {
-    label: 'Menu 2',
-    path: '/'
+    label: '팀 소개',
+    path: 'https://gorde.softr.app'
   }
 ]

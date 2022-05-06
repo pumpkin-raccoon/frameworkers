@@ -1,20 +1,8 @@
-import { Alert, Snackbar } from '@mui/material'
-import KakaoButton from 'components/button/KakaoButton'
-import LinkButton from 'components/button/LinkButton'
 import Link from 'next/link'
-import { useState } from 'react'
-import { sendKakaoLink } from 'services/kakao'
-import { copyTextToClipboard } from 'utils/clipboard'
 import { FRAMEWORKS } from './constants'
 import styles from './Hero.module.scss'
 
 const Hero = () => {
-  const [open, setOpen] = useState(false)
-
-  const handleClose = () => {
-    setOpen(false)
-  }
-
   return (
     <div className={styles.container}>
       <p className={styles.title}>

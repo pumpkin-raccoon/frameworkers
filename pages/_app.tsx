@@ -27,8 +27,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>{META_DATA.title}</title>
         <meta name="description" property="og:description" content={META_DATA.description} key="description" />
-        <meta property="og:image" content={META_DATA.image} key="image" />
+        <meta property="og:image" content="/images/og-image.png" key="image" />
         <meta property="og:title" content={META_DATA.title} key="title" />
+        <link rel="icon" href="/images/favicon.ico" />
       </Head>
       <QueryClientProvider client={queryClient}>
         <Component {...pageProps} />

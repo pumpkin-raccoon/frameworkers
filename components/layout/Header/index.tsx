@@ -16,8 +16,9 @@ const Header = () => {
           <Link 
             href={menuItem.path}
             key={menuItem.label}
+            passHref
           >
-            <a className={styles.menu}>
+            <a className={styles.menu} target="_blank">
               {menuItem.label}
             </a>
           </Link>

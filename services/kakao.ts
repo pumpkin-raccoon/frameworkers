@@ -1,14 +1,12 @@
 interface SendKakaoLinkParams {
   title: string
   description: string
-  image: string
   path: string
 }
 
 export const sendKakaoLink = ({
   title,
   description,
-  image,
   path
 }: SendKakaoLinkParams) => {
   (<any>window)?.Kakao?.Link?.sendCustom?.({
@@ -16,7 +14,6 @@ export const sendKakaoLink = ({
     templateArgs: {
       title,
       description,
-      image,
       path
     }
   })

@@ -31,7 +31,6 @@ const RelationshipResultPage = () => {
       <Head>
         <title>{title}</title>
         <meta name="description" property="og:description" content={description} key="description" />
-        {/* <meta property="og:image" content={META_DATA.image} key="image" /> */}
         <meta property="og:title" content={title} key="title" />
       </Head>
       <RelationshipResultContainer relationship={relationship} />
