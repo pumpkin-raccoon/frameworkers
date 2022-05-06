@@ -43,9 +43,14 @@ const RelationshipResultContainer = ({
       <div className={styles.result}>
         <RelationshipResult relationship={relationship}/>
       </div>
+      <div className={styles.message}>
+        <p>
+          - 현재 베타서비스 상태이며, 추후 상세 분석이 추가될 예정입니다.
+        </p>
+      </div>
       <div className={styles.buttonWrapper}>
         <MainButton onClick={() => router.push('/relationship')}>
-          내 인간관계 분석하기
+          나도 분석해보기
         </MainButton>
       </div>
     </div>

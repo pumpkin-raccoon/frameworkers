@@ -37,6 +37,13 @@
   overflow: auto;
 }
 
+.message {
+  padding: 10px 10px;
+  word-break: keep-all;
+  font-size: 13px;
+  color: $grayscale80;
+}
+
 .buttonWrapper {
   position: fixed;
   bottom: 40px;

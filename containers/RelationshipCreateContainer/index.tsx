@@ -137,6 +137,11 @@ const RelationshipCreateContainer = () => {
           </div>
         )}
       </div>
+      <div className={styles.message}>
+        <p>
+          - 현재 베타서비스 상태이며, 추후 인스타 친구 불러오기 등의 기능이 추가될 예정입니다.
+        </p>
+      </div>
       <div className={styles.buttonWrapper}>
         <MainButton onClick={handleSubmit}>
           분석 결과 확인하기
