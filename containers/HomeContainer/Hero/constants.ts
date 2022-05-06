@@ -23,7 +23,7 @@ export const FRAMEWORKS: Framework[] = [
   }, {
     name: '아이젠하워 매트릭스',
     image: '/images/izen.png',
-    description: '가장 빠르게 일 할 수 있는 방법! 아이젠하워 대통령이 사용했던 것으로도 유명한 시간관리 프레임워크를 사용해 보세요.',
+    description: '가장 효율적으로 일 할 수 있는 방법! 아이젠하워 대통령이 사용했던 것으로도 유명한 시간관리 프레임워크를 사용해 보세요.',
     path: '/',
     disable: true,
   }

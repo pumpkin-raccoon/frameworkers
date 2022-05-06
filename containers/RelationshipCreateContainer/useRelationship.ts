@@ -1,20 +1,34 @@
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { RelationshipPerson } from "types/relationship"
-import { RELATIONSHIP_KEY } from "./constants"
+import useInstagramFollower from "./useInstagramFollower"
 import usePostRelationship from "./usePostRelationship"
 
 const useRelationship = () => {
   const router = useRouter()
   const { name, instagram } = router.query
+  const RELATIONSHIP_KEY = `${name}_relationship`
   const [people, setPeople] = useState<RelationshipPerson[]>([])
   const [targetIndex, setTargetIndex] = useState<number>(-1)
   const [openModal, setOpenModal] = useState<'relation' | 'confirm' | undefined>(undefined)
   const [isToastOpened, setIsToastOpened] = useState(false)
   const [toastMessage, setToastMessage] = useState('')
-  const { postRelationship, isLoading } = usePostRelationship()
+  const { 
+    postRelationship, 
+    isLoading,
+  } = usePostRelationship()
+  const {
+    isAvailable,
+    isLoadingAvailability,
+    isLoadingProfile,
+    profileFollower,
+  } = useInstagramFollower(instagram?.toString() ?? '')
 
   const addPerson = () => {
+    if (isLoadingProfile) {
+      openToast('인스타그램 팔로워를 불러오고 있습니다.. 잠시만 기다려주세요:)')
+      return
+    }
     openTargetPerson(-1)
   }
 
@@ -90,6 +104,24 @@ const useRelationship = () => {
     fetchRelationship()
   }, [])
 
+  useEffect(() => {
+    console.log('insta loading : ', isLoadingProfile, profileFollower, instagram)
+    if (!isLoadingAvailability && !isAvailable && instagram) {
+      openToast('현재 인스타그램 정보를 읽어올 수 없어요 :(')
+    }
+  }, [isLoadingAvailability, isAvailable, instagram])
+
+  useEffect(() => {
+    console.log('insta follower : ', isLoadingProfile, profileFollower, instagram)
+    if (!isLoadingProfile && instagram) {
+      if (profileFollower) {
+        // follower를 people에 추가하기
+      } else {
+        openToast('현재 인스타그램 정보를 읽어올 수 없습니다 :(')
+      }
+    }
+  }, [isLoadingProfile, profileFollower, instagram])
+
   return {
     people,
     addPerson,
@@ -104,10 +136,14 @@ const useRelationship = () => {
     openTargetPerson,
     handleSubmit,
     isLoading,
+    isLoadingProfile,
+    isLoadingAvailability,
     setIsToastOpened,
     isToastOpened,
     toastMessage,
-    postRequest
+    postRequest,
+    shouldRenderPeople: !isLoadingProfile && people.length > 0,
+    shouldRenderEmpty: !isLoadingProfile && people.length === 0,
   }
 }
 

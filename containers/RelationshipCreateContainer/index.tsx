@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material"
 import classNames from "classnames"
 import MainButton from "components/button/MainButton"
 import ConfirmModal from "components/ConfirmModal"
@@ -11,7 +12,7 @@ import styles from './RelationshipCreateContainer.module.scss'
 import useRelationship from "./useRelationship"
 
 const RelationshipCreateContainer = () => {
-  const { name, instagram } = useRouter().query
+  const { name } = useRouter().query
   const {
     people,
     targetPerson,
@@ -28,6 +29,10 @@ const RelationshipCreateContainer = () => {
     isToastOpened,
     toastMessage,
     postRequest,
+    isLoadingAvailability,
+    isLoadingProfile,
+    shouldRenderPeople,
+    shouldRenderEmpty
   } = useRelationship()
 
   return (
@@ -49,8 +54,7 @@ const RelationshipCreateContainer = () => {
         styles.box,
         {[styles.empty]: people.length === 0}
       ])}>
-        {people.length > 0
-          ?
+        {shouldRenderPeople && (
           <div>
             {people.map((relation: RelationshipPerson, index: number) => (
               <div
@@ -117,11 +121,21 @@ const RelationshipCreateContainer = () => {
               </div>
             ))}
           </div>
-          :
+        )}
+        {shouldRenderEmpty && (
           <p className={styles.emptyMessage}>
             지인을 추가해 주세요.
           </p>
-        }
+        )}
+        {isLoadingProfile && (
+          <div className={styles.loadingBox}>
+            <CircularProgress />
+            <p>
+              인스타그램 팔로잉 목록을 불러오고 있습니다.<br/>
+              시간이 조금 걸릴지도 몰라요… 삐질;;
+            </p>
+          </div>
+        )}
       </div>
       <div className={styles.buttonWrapper}>
         <MainButton onClick={handleSubmit}>
@@ -151,7 +165,7 @@ const RelationshipCreateContainer = () => {
         open={isToastOpened}
         onClose={() => setIsToastOpened(false)}
       />
-      <LoadingModal open={isLoading}/>
+      <LoadingModal open={isLoading || isLoadingAvailability}/>
     </div>
   )
 }
