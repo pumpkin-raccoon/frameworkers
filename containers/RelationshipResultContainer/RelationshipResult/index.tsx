@@ -23,7 +23,7 @@ const RelationshipResult = ({
   return (
     <div className={styles.container}>
       <Script src="https://d3js.org/d3.v6.js" />
-      <div>
+      <div className={styles.menuWrapper}>
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="demo-select-small">분석 종류</InputLabel>
           <Select
@@ -70,7 +70,12 @@ const RelationshipResult = ({
       )}
       
 
-      <div className={styles.pieChart}>
+      <div 
+        className={classNames(
+          styles.chartWrapper,
+          {[styles.overflow]: menu === RelationshipResultMenu.Diagram}
+        )}
+      >
         <div 
           id="diagram" 
           className={classNames({[styles.disappear]: menu !== RelationshipResultMenu.Diagram})}
