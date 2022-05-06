@@ -45,34 +45,6 @@ const Hero = () => {
             </div>
           </div>
         ))}
-        {/* <KakaoButton 
-          onClick={() => sendKakaoLink({
-            title: '테스트하기',
-            description: '테스트하기이',
-            path: '',
-            image: '',
-          })}
-        />
-        <LinkButton 
-          onClick={() => {
-            copyTextToClipboard('hihi')
-            setOpen(true)
-          }}
-        />
-        <Snackbar 
-          open={open} 
-          autoHideDuration={3000} 
-          onClose={handleClose}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'center'}}
-        >
-          <Alert 
-            onClose={handleClose} 
-            severity="success" 
-            sx={{ width: '100%' }}
-          >
-            링크가 클립보드에 복사되었습니다.
-          </Alert>
-        </Snackbar> */}
       </div>
     </div>
   )

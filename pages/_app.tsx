@@ -4,8 +4,12 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { META_DATA } from 'constants/meta'
 import Script from 'next/script'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
-function MyApp({ Component, pageProps }: AppProps) {
+const queryClient = new QueryClient()
+
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  
   return (
     <div>
       <Script 
@@ -22,7 +26,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="og:image" content={META_DATA.image} key="image" />
         <meta property="og:title" content={META_DATA.title} key="title" />
       </Head>
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+      </QueryClientProvider>
     </div>
   )
 }
