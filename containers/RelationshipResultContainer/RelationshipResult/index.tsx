@@ -1,10 +1,10 @@
 import { FormControl, InputLabel, MenuItem, Radio, Select } from "@mui/material"
 import { Relationship } from "types/relationship"
-import useRelationshipResult, { PieChartType, RelationshipResultMenu } from "./useRelationshipResult"
+import useRelationshipResult, { RelationshipResultMenu } from "./useRelationshipResult"
 import styles from './RelationshipResult.module.scss'
 import Script from "next/script"
 import classNames from "classnames"
-import { getPieChartTypeText } from "./functions"
+import { getPieChartTypeText, PieChartType } from "./functions"
 
 interface RelationshipResultProps {
   relationship: Relationship
@@ -19,9 +19,7 @@ const RelationshipResult = ({
     pieChartType,
     setPieChartType,
   } = useRelationshipResult({ relationship })
-  console.log('menu : ', menu)
-  console.log('type : ', pieChartType)
-
+  
   return (
     <div className={styles.container}>
       <Script src="https://d3js.org/d3.v6.js" />

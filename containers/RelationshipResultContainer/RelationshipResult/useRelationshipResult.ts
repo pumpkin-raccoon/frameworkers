@@ -1,18 +1,12 @@
 import { useEffect, useMemo, useState } from "react"
 import { Gender, Relationship, RelationshipAge, RelationshipIntimacy, RelationshipPerson } from "types/relationship"
+import { getVennDiagramSet, PieChartType, VennDiagramSet } from "./functions"
 import { updatePieChart } from './pieChart'
 import { initializeDiagram } from './vennDiagram'
 
 export enum RelationshipResultMenu {
   Diagram = 'DIAGRAM',
   Pie = 'PIE'
-}
-
-export enum PieChartType {
-  Age = 'AGE',
-  Intimacy = 'INTIMACY',
-  Gender = 'GENDER',
-  Category = 'CATEGORY'
 }
 
 interface UseRelationshipResultProps {
@@ -64,6 +58,16 @@ const useRelationshipResult = ({
     }
   }, [relationship])
 
+  const diagramSets = useMemo(() => {
+    let returnSets: VennDiagramSet[] = []
+    relationship.people.forEach((person) => {
+      if (person.category && person.category.length > 0) {
+        returnSets = getVennDiagramSet(person.category, returnSets)
+      }
+    })
+    return returnSets
+  }, [relationship])
+
   const getPieChartData = (type: PieChartType) => {
     switch (type) {
       case PieChartType.Age:
@@ -103,7 +107,7 @@ const useRelationshipResult = ({
         updatePieChart(type, getPieChartData(type))
       })
     }
-    initializeDiagram()
+    initializeDiagram(diagramSets)
     initializePieChart()
   }
 

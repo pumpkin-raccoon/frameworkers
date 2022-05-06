@@ -1,17 +1,11 @@
-import venn from '@upsetjs/venn.js'
+import { VennDiagram, sortAreas } from '@upsetjs/venn.js'
 
-export const initializeDiagram = () => {
-  const sets = [
-    { sets: ['A'], size: 12 },
-    { sets: ['B'], size: 12 },
-    { sets: ['A', 'B'], size: 2 },
-  ];
+export const initializeDiagram = async (sets) => {
+  const chart = VennDiagram();
 
-  const chart = venn?.VennDiagram();
-  if (chart) {
-    d3
-      .select('#diagram')
-      .datum(sets)
-      .call(chart);
-  }
+  d3.select('#diagram').datum(sets).call(chart);
+
+  // d3.select('#diagram').datum(sets).call(chart);
+  // d3.selectAll('#diagram .venn-circle path').style('fill-opacity', 0.8);
+  // d3.selectAll('#diagram text').style('fill', 'white');
 }
