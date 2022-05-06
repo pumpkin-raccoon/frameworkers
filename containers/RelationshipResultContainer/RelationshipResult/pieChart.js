@@ -2,8 +2,8 @@
 
 export const updatePieChart = (wrapperId, data) => {
   // set the dimensions and margins of the graph
-  const width = 350
-  const height = 350
+  const width = 320
+  const height = 320
   const margin = 0
 
   // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
