@@ -1,10 +1,10 @@
 import { useMutation } from "react-query"
-import { Relationship } from "types/relationship"
+import { RelationshipPerson } from "types/relationship"
 import { getAxiosRequest } from "utils/axios"
 
 interface PostRelationshipParams {
   name: string
-  people: Relationship[]
+  people: RelationshipPerson[]
 }
 
 const usePostRelationship = () => {

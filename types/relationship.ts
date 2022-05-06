@@ -16,6 +16,12 @@ export enum RelationshipAge {
 }
 
 export interface Relationship {
+  name: string
+  people: RelationshipPerson[]
+  url: string
+}
+
+export interface RelationshipPerson {
   name?: string
   gender?: Gender
   age?: RelationshipAge

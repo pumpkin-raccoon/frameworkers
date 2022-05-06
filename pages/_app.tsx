@@ -13,6 +13,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <div>
       <Script 
+        src="https://d3js.org/d3.v6.js"
+        strategy="beforeInteractive"
+      />
+      <Script 
         src="https://developers.kakao.com/sdk/js/kakao.js"
         strategy="beforeInteractive"
       />

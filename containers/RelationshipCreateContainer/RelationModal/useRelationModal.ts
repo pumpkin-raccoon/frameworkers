@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react"
-import { Relationship } from "types/relationship"
+import { RelationshipPerson } from "types/relationship"
 import { CATEGORY_SET } from "./constants"
 
 interface UseRelationModalProps {
   opened: boolean
-  inputRelation: Relationship
-  updateRelation: (relation: Relationship) => void
+  inputPerson: RelationshipPerson
+  updatePerson: (relation: RelationshipPerson) => void
 }
 
 const useRelationModal = ({
   opened,
-  inputRelation,
-  updateRelation
+  inputPerson,
+  updatePerson
 }: UseRelationModalProps) => {
-  const [relation, setRelation] = useState<Relationship>(inputRelation)
+  const [relation, setRelation] = useState<RelationshipPerson>(inputPerson)
   const [step, setStep] = useState<'info' | 'category'>('info')
   const [openToast, setOpenToast] = useState(false)
   const [categoryOptions, setCategoryOptions] = useState(CATEGORY_SET)
@@ -29,7 +29,7 @@ const useRelationModal = ({
       setOpenToast(true)
       return
     }
-    updateRelation(relation)
+    updatePerson(relation)
     reset()
   }
 
@@ -40,7 +40,7 @@ const useRelationModal = ({
     setCustomCategoryMode(false)
   }
 
-  const setRelationByKey = (key: keyof Relationship, value: Relationship[keyof Relationship]) => {
+  const setRelationByKey = (key: keyof RelationshipPerson, value: RelationshipPerson[keyof RelationshipPerson]) => {
     setRelation({ ...relation, [key]: value })
   }
 
@@ -71,10 +71,10 @@ const useRelationModal = ({
   }
 
   useEffect(() => {
-    if (opened && inputRelation.name) {
-      setRelation(inputRelation)
+    if (opened && inputPerson.name) {
+      setRelation(inputPerson)
     }
-  }, [inputRelation, opened])
+  }, [inputPerson, opened])
 
   return {
     openToast,

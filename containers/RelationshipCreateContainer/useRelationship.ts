@@ -1,66 +1,66 @@
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import { Relationship } from "types/relationship"
+import { RelationshipPerson } from "types/relationship"
 import { RELATIONSHIP_KEY } from "./constants"
 import usePostRelationship from "./usePostRelationship"
 
 const useRelationship = () => {
   const router = useRouter()
   const { name, instagram } = router.query
-  const [relations, setRelations] = useState<Relationship[]>([])
+  const [people, setPeople] = useState<RelationshipPerson[]>([])
   const [targetIndex, setTargetIndex] = useState<number>(-1)
   const [openModal, setOpenModal] = useState(false)
   const [isToastOpened, setIsToastOpened] = useState(false)
   const [toastMessage, setToastMessage] = useState('')
   const { postRelationship, isLoading } = usePostRelationship()
 
-  const addRelation = () => {
+  const addPerson = () => {
     setOpenModal(true)
-    openTargetRelation(-1)
+    openTargetPerson(-1)
   }
 
-  const openTargetRelation = (index: number) => {
+  const openTargetPerson = (index: number) => {
     setTargetIndex(index)
     setOpenModal(true)
   }
 
-  const removeRelation = (index: number) => {
-    const newRelations = [...relations]
-    newRelations.splice(index, 1)
-    setRelations(newRelations)
-    saveRelationship(newRelations)
+  const removePerson = (index: number) => {
+    const newPeople = [...people]
+    newPeople.splice(index, 1)
+    setPeople(newPeople)
+    savePeople(newPeople)
   }
 
-  const hasInformation = (relation: Relationship) => {
+  const hasInformation = (person: RelationshipPerson) => {
     return Boolean(
-      relation.age
-      || relation.gender
-      || relation.intimacy
-      || (relation.category?.length ?? 0) > 0
+      person.age
+      || person.gender
+      || person.intimacy
+      || (person.category?.length ?? 0) > 0
     )
   }
 
-  const updateRelationship = (relation: Relationship) => {
-    const newRelations = [...relations]
+  const updatePerson = (person: RelationshipPerson) => {
+    const newPeople = [...people]
     if (targetIndex < 0) {
-      newRelations.push(relation)
+      newPeople.push(person)
     } else {
-      newRelations.splice(targetIndex, 1, relation)
+      newPeople.splice(targetIndex, 1, person)
     }
-    setRelations(newRelations)
+    setPeople(newPeople)
     setOpenModal(false)
-    saveRelationship(newRelations)
+    savePeople(newPeople)
   }
 
-  const saveRelationship = (newRelations: Relationship[]) => {
-    localStorage.setItem(RELATIONSHIP_KEY, JSON.stringify(newRelations))
+  const savePeople = (newPeople: RelationshipPerson[]) => {
+    localStorage.setItem(RELATIONSHIP_KEY, JSON.stringify(newPeople))
   }
 
   const fetchRelationship = () => {
     const savedRelationship = localStorage.getItem(RELATIONSHIP_KEY)
     if (savedRelationship) {
       const targetRelationship = JSON.parse(savedRelationship)
-      setRelations(targetRelationship)
+      setPeople(targetRelationship)
     }
   }
 
@@ -72,7 +72,7 @@ const useRelationship = () => {
   const handleSubmit = async () => {
     const result = await postRelationship({
       name: name?.toString() ?? '프레임워커스',
-      people: relations
+      people,
     })
     const targetPath = result?.data?.url
     if (!targetPath) {
@@ -88,17 +88,17 @@ const useRelationship = () => {
   }, [])
 
   return {
-    relations,
-    addRelation,
-    targetRelation: targetIndex >= 0
-      ? relations[targetIndex]
+    people,
+    addPerson,
+    targetPerson: targetIndex >= 0
+      ? people[targetIndex]
       : undefined,
     closeModal: () => setOpenModal(false),
     openModal,
-    removeRelation,
+    removePerson,
     hasInformation,
-    updateRelationship,
-    openTargetRelation,
+    updatePerson,
+    openTargetPerson,
     handleSubmit,
     isLoading,
     setIsToastOpened,

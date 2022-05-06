@@ -3,7 +3,7 @@ import MainButton from "components/button/MainButton"
 import LoadingModal from "components/LoadingModal"
 import Toast from "components/Toast"
 import { useRouter } from "next/router"
-import { Relationship } from "types/relationship"
+import { RelationshipPerson } from "types/relationship"
 import RelationModal from "./RelationModal"
 import { getAgeText, getGenderText, getIntimacyText } from "./RelationModal/functions"
 import styles from './RelationshipCreateContainer.module.scss'
@@ -12,15 +12,15 @@ import useRelationship from "./useRelationship"
 const RelationshipCreateContainer = () => {
   const { name, instagram } = useRouter().query
   const {
-    relations,
-    targetRelation,
-    addRelation,
+    people,
+    targetPerson,
+    addPerson,
     openModal,
-    updateRelationship,
+    updatePerson,
     closeModal,
-    removeRelation,
+    removePerson,
     hasInformation,
-    openTargetRelation,
+    openTargetPerson,
     handleSubmit,
     isLoading,
     setIsToastOpened,
@@ -33,11 +33,11 @@ const RelationshipCreateContainer = () => {
       <div>
         <div className={styles.header}>
           <p className={styles.title}>
-            <strong>{name}님</strong>의 지인 목록 ({relations.length}명)
+            <strong>{name}님</strong>의 지인 목록 ({people.length}명)
           </p>
           <button 
             className={styles.add}
-            onClick={addRelation}
+            onClick={addPerson}
           >
             + 직접 추가하기
           </button>
@@ -45,16 +45,16 @@ const RelationshipCreateContainer = () => {
       </div>
       <div className={classNames([
         styles.box,
-        {[styles.empty]: relations.length === 0}
+        {[styles.empty]: people.length === 0}
       ])}>
-        {relations.length > 0
+        {people.length > 0
           ?
           <div>
-            {relations.map((relation: Relationship, index: number) => (
+            {people.map((relation: RelationshipPerson, index: number) => (
               <div
                 key={index}
                 className={styles.relation}
-                onClick={() => openTargetRelation(index)}
+                onClick={() => openTargetPerson(index)}
               >
                 <div>
                   <p className={styles.relationName}>
@@ -105,7 +105,7 @@ const RelationshipCreateContainer = () => {
                   <button
                     onClick={(event) => {
                       event.stopPropagation()
-                      removeRelation(index)
+                      removePerson(index)
                     }}
                     className={styles.removeButton}
                   >
@@ -127,8 +127,8 @@ const RelationshipCreateContainer = () => {
         </MainButton>
       </div>
       <RelationModal 
-        updateRelation={updateRelationship}
-        inputRelation={targetRelation}
+        updatePerson={updatePerson}
+        inputPerson={targetPerson}
         open={openModal}
         onClose={closeModal}
       />

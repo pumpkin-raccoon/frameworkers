@@ -1,7 +1,10 @@
 import KakaoButton from "components/button/KakaoButton"
 import LinkButton from "components/button/LinkButton"
+import MainButton from "components/button/MainButton"
 import Toast from "components/Toast"
+import { useRouter } from "next/router"
 import { Relationship } from "types/relationship"
+import RelationshipResult from "./RelationshipResult"
 import styles from './RelationshipResultContainer.module.scss'
 import useShareButtons from "./useShareButtons"
 
@@ -12,6 +15,7 @@ interface RelationshipResultContainerProps {
 const RelationshipResultContainer = ({
   relationship
 }: RelationshipResultContainerProps) => {
+  const router = useRouter()
   const {
     onClickKakaoLink,
     onClickShareLink,
@@ -35,6 +39,14 @@ const RelationshipResultContainer = ({
             type="success"
           />
         </div>
+      </div>
+      <div className={styles.result}>
+        <RelationshipResult relationship={relationship}/>
+      </div>
+      <div className={styles.buttonWrapper}>
+        <MainButton onClick={() => router.push('/relationship/create')}>
+          내 인간관계 분석하기
+        </MainButton>
       </div>
     </div>
   )

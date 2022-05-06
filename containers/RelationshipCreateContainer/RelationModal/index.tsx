@@ -1,21 +1,21 @@
-import { Checkbox, Modal, Radio } from "@mui/material"
+import { Modal, Radio } from "@mui/material"
 import Toast from "components/Toast"
-import { Gender, Relationship, RelationshipAge, RelationshipIntimacy } from "types/relationship"
+import { Gender, RelationshipAge, RelationshipIntimacy, RelationshipPerson } from "types/relationship"
 import styles from './RelationModal.module.scss'
 import useRelationModal from "./useRelationModal"
 
 interface RelationModalProps {
   open: boolean
   onClose: () => unknown
-  updateRelation: (relation: Relationship) => unknown
-  inputRelation?: Relationship
+  updatePerson: (person: RelationshipPerson) => unknown
+  inputPerson?: RelationshipPerson
 }
 
 const RelationModal = ({
   open,
   onClose,
-  inputRelation = {},
-  updateRelation,
+  inputPerson = {},
+  updatePerson,
 }: RelationModalProps) => {
   const {
     openToast,
@@ -34,8 +34,8 @@ const RelationModal = ({
     setCustomCategoryInput,
     onClickCategoryInput,
   } = useRelationModal({
-    inputRelation, 
-    updateRelation,
+    inputPerson, 
+    updatePerson,
     opened: open
   })
 
