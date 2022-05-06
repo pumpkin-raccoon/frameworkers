@@ -23,6 +23,15 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <Script id="kakao-sdk">
         {`Kakao.init('17657aadc9aca8d918a2302c05e213ca');`}
       </Script>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-CDD735D7M9"/>
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-CDD735D7M9');
+        `}
+      </Script>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>{META_DATA.title}</title>

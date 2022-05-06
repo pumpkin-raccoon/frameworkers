@@ -4,6 +4,5 @@ export const CATEGORY_SET = [
   '중학교',
   '고등학교',
   '대학교',
-  '아르바이트',
   '회사'
 ]
