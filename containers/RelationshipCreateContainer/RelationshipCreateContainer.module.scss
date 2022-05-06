@@ -3,7 +3,7 @@
 .container {
   width: 94%;
   max-width: $content-width;
-  padding-top: 15px;
+  padding: 15px 0 30px;
   margin: 0 auto;
 }
 
@@ -36,7 +36,7 @@
   margin-top: 10px;
   width: 100%;
   min-height: 300px;
-  max-height: 70vh;
+  max-height: 75vh;
   border: 1px solid $grayscale50;
   border-radius: 10px;
   overflow: auto;
@@ -101,7 +101,12 @@
 }
 
 .buttonWrapper {
+  position: fixed;
+  bottom: 40px;
+  transform: translateX(-50%);
+  left: 50%;
   margin-top: 20px;
+  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: center;

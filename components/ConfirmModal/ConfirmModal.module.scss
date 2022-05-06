@@ -1,0 +1,49 @@
+@import 'styles/utils';
+
+.container {
+  width: 94%;
+  max-width: 450px;
+  margin: 0 auto;
+  background-color: $grayscale00;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.contents {
+  max-height: 70vh;
+  padding: 20px 7%;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.description {
+  margin-top: 15px;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: .1rem solid $grayscale20;
+
+  button {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 15px 0;
+    font-size: 16px;
+    color: $pointColor;
+    background-color: $grayscale00;
+  }
+
+  .back {
+    color: $grayscale80;
+  }
+}

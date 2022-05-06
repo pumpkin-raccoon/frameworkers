@@ -1,5 +1,6 @@
 import classNames from "classnames"
 import MainButton from "components/button/MainButton"
+import ConfirmModal from "components/ConfirmModal"
 import LoadingModal from "components/LoadingModal"
 import Toast from "components/Toast"
 import { useRouter } from "next/router"
@@ -26,6 +27,7 @@ const RelationshipCreateContainer = () => {
     setIsToastOpened,
     isToastOpened,
     toastMessage,
+    postRequest,
   } = useRelationship()
 
   return (
@@ -33,7 +35,7 @@ const RelationshipCreateContainer = () => {
       <div>
         <div className={styles.header}>
           <p className={styles.title}>
-            <strong>{name}님</strong>의 지인 목록 ({people.length}명)
+            <strong>{name}</strong>님의 지인 목록 ({people.length}명)
           </p>
           <button 
             className={styles.add}
@@ -129,8 +131,20 @@ const RelationshipCreateContainer = () => {
       <RelationModal 
         updatePerson={updatePerson}
         inputPerson={targetPerson}
-        open={openModal}
+        open={openModal === 'relation'}
         onClose={closeModal}
+      />
+      <ConfirmModal
+        open={openModal === 'confirm'}
+        onClose={closeModal}
+        onConfirm={postRequest}
+        title="분석 결과를 확인해 볼까요?"
+        content={(
+          <p>
+            분석 결과를 확인하면 아무도 세부 정보를 확인하거나<br/>
+            수정할 수 없습니다. 마지막으로 한번 더 점검해주세요.
+          </p>
+        )}
       />
       <Toast 
         message={toastMessage}

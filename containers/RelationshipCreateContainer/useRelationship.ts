@@ -9,19 +9,19 @@ const useRelationship = () => {
   const { name, instagram } = router.query
   const [people, setPeople] = useState<RelationshipPerson[]>([])
   const [targetIndex, setTargetIndex] = useState<number>(-1)
-  const [openModal, setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState<'relation' | 'confirm' | undefined>(undefined)
   const [isToastOpened, setIsToastOpened] = useState(false)
   const [toastMessage, setToastMessage] = useState('')
   const { postRelationship, isLoading } = usePostRelationship()
 
   const addPerson = () => {
-    setOpenModal(true)
+    setOpenModal(undefined)
     openTargetPerson(-1)
   }
 
   const openTargetPerson = (index: number) => {
     setTargetIndex(index)
-    setOpenModal(true)
+    setOpenModal(undefined)
   }
 
   const removePerson = (index: number) => {
@@ -48,7 +48,7 @@ const useRelationship = () => {
       newPeople.splice(targetIndex, 1, person)
     }
     setPeople(newPeople)
-    setOpenModal(false)
+    setOpenModal(undefined)
     savePeople(newPeople)
   }
 
@@ -69,7 +69,7 @@ const useRelationship = () => {
     setIsToastOpened(true)
   }
 
-  const handleSubmit = async () => {
+  const postRequest = async () => {
     const result = await postRelationship({
       name: name?.toString() ?? '프레임워커스',
       people,
@@ -83,6 +83,10 @@ const useRelationship = () => {
     router.push(`/relationship/${targetPath}`)
   }
 
+  const handleSubmit = async () => {
+    setOpenModal('confirm')
+  }
+
   useEffect(() => {
     fetchRelationship()
   }, [])
@@ -93,7 +97,7 @@ const useRelationship = () => {
     targetPerson: targetIndex >= 0
       ? people[targetIndex]
       : undefined,
-    closeModal: () => setOpenModal(false),
+    closeModal: () => setOpenModal(undefined),
     openModal,
     removePerson,
     hasInformation,
@@ -104,6 +108,7 @@ const useRelationship = () => {
     setIsToastOpened,
     isToastOpened,
     toastMessage,
+    postRequest
   }
 }
 

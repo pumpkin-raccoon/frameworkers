@@ -3,7 +3,7 @@
 .container {
   width: 96%;
   max-width: 800px;
-  padding-top: 20px;
+  padding: 20px 0 40px;
   margin: 0 auto;
 }
 
@@ -38,7 +38,11 @@
 }
 
 .buttonWrapper {
-  margin-top: 30px;
+  position: fixed;
+  bottom: 40px;
+  transform: translateX(-50%);
+  left: 50%;
+  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: center;

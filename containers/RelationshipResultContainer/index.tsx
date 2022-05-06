@@ -27,7 +27,7 @@ const RelationshipResultContainer = ({
     <div className={styles.container}>
       <div className={styles.header}>
         <p className={styles.title}>
-          <strong>{relationship.name}님</strong>의 인간관계 분석 결과
+          <strong>{relationship.name}</strong>님의 인간관계 분석 결과
         </p>
         <div className={styles.shareButtons}>
           <KakaoButton onClick={onClickKakaoLink}/>
@@ -44,7 +44,7 @@ const RelationshipResultContainer = ({
         <RelationshipResult relationship={relationship}/>
       </div>
       <div className={styles.buttonWrapper}>
-        <MainButton onClick={() => router.push('/relationship/create')}>
+        <MainButton onClick={() => router.push('/relationship')}>
           내 인간관계 분석하기
         </MainButton>
       </div>
