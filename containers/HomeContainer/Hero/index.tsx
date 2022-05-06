@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import Link from 'next/link'
 import { FRAMEWORKS } from './constants'
 import styles from './Hero.module.scss'
@@ -29,8 +30,13 @@ const Hero = () => {
             </p>
             <div className={styles.buttonWrapper}>
               <Link href={framework.path}>
-                <a className={styles.button}>
-                  확인해보기
+                <a className={classNames(
+                  styles.button,
+                  {[styles.disable]: framework.disable}
+                )}>
+                  {framework.disable
+                    ? '준비중입니다..!'
+                    : '확인해보기'}
                 </a>
               </Link>
             </div>

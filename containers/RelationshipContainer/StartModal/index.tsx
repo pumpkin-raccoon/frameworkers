@@ -47,7 +47,7 @@ const StartModal = ({
             <div className={styles.form}>
               <div className={styles.inputSet}>
                 <p>
-                  이름을 알려주세요.
+                  이름을 알려주세요. *
                 </p>
                 <input 
                   placeholder="이름을 입력해 주세요."

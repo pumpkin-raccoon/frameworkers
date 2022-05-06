@@ -102,8 +102,15 @@
   color: $grayscale00;
   background-color: $pointColor;
   border-radius: 10px;
+  cursor: pointer;
   @include desktop {
     padding: 10px 20px;
     font-size: 16px;
+  }
+
+  &.disable {
+    cursor: not-allowed;
+    background-color: $grayscale20;
+    color: $grayscale80;
   }
 }
