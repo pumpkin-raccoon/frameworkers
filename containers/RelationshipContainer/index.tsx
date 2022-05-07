@@ -39,11 +39,19 @@ const RelationshipContainer = () => {
           이런 분석을 확인할 수 있어요!
         </p>
         <img 
-          src="/images/relation-example-01.png"
+          src="/images/relation-example-1.png"
           alt="relationship framework example"
         />
         <img 
-          src="/images/relation-example-02.png"
+          src="/images/relation-example-2.png"
+          alt="relationship framework example"
+        />
+         <img 
+          src="/images/relation-example-3.png"
+          alt="relationship framework example"
+        />
+         <img 
+          src="/images/relation-example-4.png"
           alt="relationship framework example"
         />
       </div>
